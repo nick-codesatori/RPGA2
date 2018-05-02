@@ -1,0 +1,219 @@
+﻿@model RPGA.Presentation.Models.CharacterVM
+@using RPGA.Common
+<div class="container-fluid border border-dark rounded" style="padding-bottom:20px; margin-bottom:0;">
+	<row class="col-12" style="margin-bottom:0; padding-bottom:0;">
+		<h3 class="font-weight-bold"> @Model.Race @Model.Background @Model.Class</h3>
+		<table class="table text-center table-borderless" style="margin-bottom:0; padding-bottom:0;">
+			<tr>
+				<td class="font-weight-bold"><i class="far fa-arrow-alt-circle-right"></i> Level: @Model.Level.ToString()</td>
+				<td class="font-weight-bold"><i class="far fa-arrow-alt-circle-right"></i> HP: @Model.HP()</td>
+				<td class="font-weight-bold"><i class="far fa-arrow-alt-circle-right"></i> Size: @Model.Size</td>
+				<td class="font-weight-bold"><i class="far fa-arrow-alt-circle-right"></i> Speed: @Model.Speed</td>
+				<td class="font-weight-bold"><i class="far fa-arrow-alt-circle-right"></i> Resists: @Model.ResistancesLabel()</td>
+				<td class="font-weight-bold"><i class="far fa-arrow-alt-circle-right"></i> Vulns: @Model.VulnerabilitiesLabel()</td>
+			</tr>
+		</table>
+	</row>
+	<row class="col-12 d-flex" style="padding-bottom:10px;">
+		<div class="col-8">
+			<div class="card border-dark">
+				<div class="card-header " style="padding:2px;">
+					<strong class="" style="margin-left:5px;">Ability Scores and Skills</strong>
+				</div>
+				<div class="card-body d-flex justify-content-center" style="padding-bottom:0;">
+					<table class="table table-sm" style="margin-bottom:0;">
+						<tr> <td colspan="2"><strong>Strength: @Model.AbilityLabel(@Model.Strength)</strong></td> </tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Athletics] ? "fa-check-square" : "fa-square")"></i> Athletics:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Athletics)</small></td>
+						</tr>
+						<tr> <td colspan="2"><strong>Dexterity: @Model.AbilityLabel(@Model.Dexterity)</strong></td> </tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Acrobatics] ? "fa-check-square" : "fa-square")"></i> Acrobatics:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Acrobatics)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.SleightOfHand] ? "fa-check-square" : "fa-square")"></i> SleightOfHand:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.SleightOfHand)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Stealth] ? "fa-check-square" : "fa-square")"></i> Stealth:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Stealth)</small></td>
+						</tr>
+					</table>
+					<table class="table table-sm">
+						<tr> <td colspan="2"><strong>Intelligence: @Model.AbilityLabel(@Model.Intelligence)</strong></td> </tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Arcana] ? "fa-check-square" : "fa-square")"></i> Arcana:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Arcana)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.History] ? "fa-check-square" : "fa-square")"></i> History:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.History)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Investigation] ? "fa-check-square" : "fa-square")"></i> Investigation:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Investigation)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Nature] ? "fa-check-square" : "fa-square")"></i> Nature:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Nature)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Religion] ? "fa-check-square" : "fa-square")"></i> Religion:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Religion)</small></td>
+						</tr>
+					</table>
+					<table class="table table-sm">
+						<tr> <td colspan="2"><strong>Wisdom: @Model.AbilityLabel(@Model.Wisdom)</strong></td> </tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.AnimalHandling] ? "fa-check-square" : "fa-square")"></i> AnimalHandling:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.AnimalHandling)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Insight] ? "fa-check-square" : "fa-square")"></i> Insight:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Insight)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Medicine] ? "fa-check-square" : "fa-square")"></i> Medicine:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Medicine)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Perception] ? "fa-check-square" : "fa-square")"></i> Perception:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Perception)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Survival] ? "fa-check-square" : "fa-square")"></i> Survival:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Survival)</small></td>
+						</tr>
+					</table>
+					<table class="table table-sm">
+						<tr> <td colspan="2"><strong>Charisma: @Model.AbilityLabel(@Model.Charisma)</strong></td> </tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Deception] ? "fa-check-square" : "fa-square")"></i> Deception:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Deception)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Intimidation] ? "fa-check-square" : "fa-square")"></i> Intimidation:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Intimidation)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Performance] ? "fa-check-square" : "fa-square")"></i> Performance:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Performance)</small></td>
+						</tr>
+						<tr>
+							<td><small><i class="far @(Model.SkillProficiencies[Constants.Skills.Persuasion] ? "fa-check-square" : "fa-square")"></i> Persuasion:</small></td>
+							<td><small>@Model.BonusLabel(Constants.Skills.Persuasion)</small></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="card border-dark">
+				<div class="card-header " style="padding:2px;">
+					<strong class="" style="margin-left:5px;">Special Attacks</strong>
+				</div>
+				<div class="card-body d-flex justify-content-start">
+					<table class="table table-sm">
+						@for (var i = 0; i < Model.Attacks.Count; i++)
+						{
+							<tr>
+								<td><strong>@Model.Attacks[i].Description</strong></td>
+								<td class="small">
+									<table class="table table-sm table-borderless">
+										<tr><td>Type:</td><td> @Model.Attacks[i].DamageTypeLabel</td></tr>
+										@{
+											if (Model.Attacks[i].Range != null | Model.Attacks[i].Shape != null)
+											{
+												<tr><td>Shape:</td><td>@Model.Attacks[i].Range  @Model.Attacks[i].Shape</td></tr>
+											}
+										}
+
+										@{
+											if (Model.Attacks[i].Save != null)
+											{
+												<tr><td>Save:</td><td>@Model.Attacks[i].Save</td></tr>
+											}
+										}
+
+										@{
+											if (Model.Attacks[i].Attack != null)
+											{
+												<tr><td>Attack:</td><td>@Model.RollAttack(i)</td></tr>
+											}
+										}
+
+										@{
+											if (Model.Attacks[i].Damage != null)
+											{
+												<tr><td>Damage:</td><td>@Model.RollDamage(i)</td></tr>
+											}
+										}
+									</table>
+								</td>
+							</tr>
+						}
+					</table>
+				</div>
+			</div>
+		</div>
+	</row>
+	<row class="col-12 d-flex">
+		<div class="col-12">
+			<div class="card border-dark">
+				<div class="card-header bg-light" style="padding-top:3px;">
+					@*<strong class="text-white" style="margin-left:5px;">Features</strong>*@
+					<ul class="nav nav-tabs card-header-tabs " id="tabsFeat" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="tabRace" data-toggle="tab" href="#panelRace" role="tab" aria-selected="true">@Model.Race</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="tabBackground" data-toggle="tab" href="#panelBackground" role="tab" aria-selected="true">@Model.Background</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="tabClass" data-toggle="tab" href="#panelClass" role="tab" aria-selected="true">@Model.Class</a>
+						</li>
+					</ul>
+				</div>
+				<div class="card-body">
+					<div class="tab-content" id="contentFeat">
+						<div class="tab-pane fade show active" id="panelRace" role="tabpanel" aria-labelledby="tabRace">
+							@{
+								foreach (SpecialFeatureVM feat in Model.SpecialFeatures)
+								{
+									if (feat.Source == Constants.Sources.Race)
+									{
+										<p style="margin-bottom:2px;"><small><strong>@feat.DisplayName</strong> - @feat.Description</small></p>
+									}
+								}
+							}
+						</div>
+						<div class="tab-pane fade " id="panelBackground" role="tabpanel" aria-labelledby="tabBackground">
+							@{
+								foreach (SpecialFeatureVM feat in Model.SpecialFeatures)
+								{
+									if (feat.Source == Constants.Sources.Background)
+									{
+										<p style="margin-bottom:2px;"><small><strong>@feat.DisplayName</strong> - @feat.Description</small></p>
+									}
+								}
+							}
+						</div>
+						<div class="tab-pane fade " id="panelClass" role="tabpanel" aria-labelledby="tabClass">
+							@{
+								foreach (SpecialFeatureVM feat in Model.SpecialFeatures)
+								{
+									if (feat.Source == Constants.Sources.Class)
+									{
+										<p style="margin-bottom:2px;"><small><strong>@feat.DisplayName</strong> - @feat.Description</small></p>
+									}
+								}
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</row>
+</div>

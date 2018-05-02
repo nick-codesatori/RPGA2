@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - RPGA</title>
+
+	<environment names="Development,Staging,Production">
+		<link rel="stylesheet" href="~/css/bootstrap.bundled.min.css" />
+		<link rel="stylesheet" href="~/css/site.css" />
+	</environment>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">RPG Automaton</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				@*<li class="nav-item">
+						<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+					</li>*@
+				<li class="nav-item">
+					<a asp-area="" asp-controller="Character" asp-action="Index" class="nav-link">Character</a>
+				</li>
+				@*<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="ddCharacter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Character
+						</a>
+						<div class="dropdown-menu" aria-labelledby="ddCharacter">
+							<a asp-area="" asp-controller="Character" asp-action="Random" class="dropdown-item">Random</a>
+						</div>
+					</li>*@
+			</ul>
+		</div>
+	</nav>
+	<br />
+	<div class="container-fluid">
+		@RenderBody()
+		<footer>
+			<p>&copy; 2018 - RPGA</p>
+		</footer>
+	</div>
+	<environment names="Development,Staging,Production">
+		<script src="~/js/bootstrap.bundled.min.js"></script>
+		<script src="scripts/app.js"></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+	</environment>
+
+	@RenderSection("Scripts", required: false)
+</body>
+</html>

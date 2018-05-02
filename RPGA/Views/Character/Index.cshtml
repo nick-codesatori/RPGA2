@@ -1,0 +1,37 @@
+﻿@model ConstraintsVM
+@using RPGA.Common
+<div class="row col-12 d-flex justify-content-start">
+	<button id="btnRefresh" type="button" class="btn btn-dark">Randomize</button>
+	<a asp-area="" asp-controller="Character" asp-action="LoadLast" class="nav-link">Load Last</a>
+	<select asp-for="RaceConstraint" asp-items="Html.GetEnumSelectList<Constants.Races>()" class="dropdown" style="margin-left:10px;">
+		<option selected="selected" value="">Please select</option>
+	</select>
+</div>
+<br />
+<div id="divCharacterComponent" class="row col-12 d-flex justify-content-start">
+	@await Component.InvokeAsync("RandomCharacter")
+</div>
+<br />
+
+@section scripts {
+	<script>
+		$(function () {
+			$("#btnRefresh").click(refreshComponent);
+		});
+		var container = $("#divCharacterComponent");
+		var refreshComponent = function () {
+			var url = "@Url.Action("GetRandomCharacter", "Character", new { RaceConstraint = 999 })";
+
+			var selectedvalue = $('#RaceConstraint').val();
+
+			var completeUrl = url.replace('999', selectedvalue);
+
+			$.get(completeUrl, {},
+				function (data) {
+					container.html(data);
+				}
+			);
+		}
+	</script>
+
+}

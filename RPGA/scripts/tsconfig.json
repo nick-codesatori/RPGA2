@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"noEmitOnError": true,
+		"sourceMap": true,
+		"target": "es5",
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitReturns": true,
+		"strict": true,
+		"noUnusedLocals": true
+	},
+	"files": [
+		"./app.ts"
+	],
+	"compileOnSave": true
+}

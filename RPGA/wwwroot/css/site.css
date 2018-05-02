@@ -1,0 +1,18 @@
+﻿
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+body {
+	background-color:whitesmoke;
+}
+/* tab color */
+.nav-tabs > li > a {
+	background-color: #333333;
+	border-color: #777777;
+	color: #fff;
+	font-weight: bold;
+	padding: 1px 5px;
+}
+
+.nav-tabs > li {
+	border:solid white 2px;
+}

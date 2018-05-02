@@ -1,0 +1,17 @@
+[
+	{
+		"outputFileName": "wwwroot/css/bootstrap.bundled.css",
+		"inputFiles": [
+			"bower_components/bootstrap/dist/css/bootstrap-reboot.min.css",
+			"bower_components/bootstrap/dist/css/bootstrap-grid.min.css",
+			"bower_components/bootstrap/dist/css/bootstrap.min.css"
+		]
+	},
+	{
+		"outputFileName": "wwwroot/js/bootstrap.bundled.js",
+		"inputFiles": [
+			"bower_components/jQuery/dist/jquery.min.js",
+			"bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"
+		]
+	}
+]
